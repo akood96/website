@@ -11,7 +11,6 @@ html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
 .mySlides {display:none}
 .w3-tag, .fa {cursor:pointer}
 .w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
-
 </style>
 <body>
 
@@ -46,238 +45,27 @@ html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
     
     
   }
-  var ref = firebase.database().ref("/");
-ref.once("value")
-  .then(function(snapshot) {
-    snapshot.forEach(function(childSnapshot) {
-      // key will be "ada" the first time and "alan" the second time
-      var key = childSnapshot.key;
-      // childData will be the actual contents of the child
-      var childData = childSnapshot.val();
-      document.getElementById("regular").innerHTML = childData['regular'];
-      document.getElementById("plus").innerHTML = childData['plus'];
-      document.getElementById("premium").innerHTML = childData['premium'];
-      document.getElementById("diesel").innerHTML = childData['diesel'];
-  });
-});
+
 
 </script>
 
 
 
 
-<!-- Links (sit on top) -->
-<div class="w3-top">
-  <div class="w3-row w3-large w3-light-grey">
-    <div class="w3-col s3">
-      <a href="#" class="w3-button w3-block">Home</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#plans" class="w3-button w3-block">Gas</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#about" class="w3-button w3-block">Food</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#contact" class="w3-button w3-block">Contact</a>
-    </div>
-  </div>
-</div>
+
 
 <!-- Content -->
 <div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
   
-
-
-  
-  
-  <div class="w3-panel">
-    <h1><b>Regal Truck Stop</b></h1>
-    <p>Trailer  Washout  From  8 AM  to  8 PM </p>
-  </div>
-
-  <!-- Slideshow -->
-  <div class="w3-container">
-    <div class="w3-display-container mySlides">
-      <img src="w3images/coffee.jpg" style="width:100%">
-      <div class="w3-display-topleft w3-container w3-padding-32">
-        <span class="w3-white w3-padding-large w3-animate-bottom">Regular Washout</span>
-      </div>
-    </div>
-    <div class="w3-display-container mySlides">
-      <img src="w3images/coffee2.jpg" style="width:100%">
-      <div class="w3-display-middle w3-container w3-padding-32">
-        <span class="w3-white w3-padding-large w3-animate-bottom">Hopper Bottom</span>
-      </div>
-    </div>
-    <div class="w3-display-container mySlides">
-      <img src="w3images/coffee3.jpg" style="width:100%">
-      <div class="w3-display-topright w3-container w3-padding-32">
-        <span class="w3-white w3-padding-large w3-animate-bottom">Prime</span>
-      </div>
-    </div>
-
-    <!-- Slideshow next/previous buttons -->
-    <div class="w3-container w3-dark-grey w3-padding w3-xlarge">
-      <div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
-      <div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
-    
-      <div class="w3-center">
-        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
-        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
-        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Grid -->
-    <div class="w3-row w3-container">
-
-    <div class="w3-center w3-padding-64">
-      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">What We Offer</span>
-    </div>
-    
-    
-
-      
-    <div class="w3-center w3-light-grey  w3-padding-16 ">
-      <h3>Info</h3>
-      <p>Prime Account</p>
-      <p>ComCheck</p>
-      <p>EFS</p>
-      <p>FleetOne</p>
-      <p>Cash or Card</p>
-
-    </div>
+  <input type= "text" placeholder= "Regular" id = "regularField">
+  <input type="text" placeholder="Plus" id = "plusField">
+  <input type="text" placeholder="Premium" id = "premiumField">
+  <input type="text" placeholder="Diesel" id = "dieselField">
+  <button onclick= "writeData()">Submit</button>
 
   
 
-  <!-- Grid -->
-  <div class="w3-row-padding" id="plans">
-    <div class="w3-center w3-padding-64">
-      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Gas Prices</span>
-      
-      <p></p>
-    </div>
 
-    <div class="w3-third w3-margin-bottom">
-      <ul class="w3-ul w3-border w3-center w3-hover-shadow">
-        <li class="w3-black w3-xlarge w3-padding-32">Regular</li>
-        <p id = "regular"></p>
-        
-        
-        
-      </ul>
-    </div>
-
-    <div class="w3-third w3-margin-bottom">
-      <ul class="w3-ul w3-border w3-center w3-hover-shadow">
-        <li class="w3-dark-grey w3-xlarge w3-padding-32">Plus</li>
-        <p id = "plus"></p>
-        
-    </div>
-
-    <div class="w3-third w3-margin-bottom">
-      <ul class="w3-ul w3-border w3-center w3-hover-shadow">
-        <li class="w3-black w3-xlarge w3-padding-32">Premium</li>
-        <p id = "premium"></p>
-        
-      </ul>
-    </div>
-  </div>
-
-  <div class="w3-third w3-margin-bottom">
-    <ul class="w3-ul w3-border w3-center w3-hover-shadow">
-      <li class="w3-black w3-xlarge w3-padding-32">Diesel</li>
-      <p id = "diesel"></p>
-      
-    </ul>
-  </div>
-</div>
-
-  <!-- Grid -->
-  <div class="w3-row-padding" id="about">
-    <div class="w3-center w3-padding-64">
-      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Food</span>
-    </div>
-
-    <div class="w3-third w3-margin-bottom">
-      <div class="w3-card-4">
-        <img src="w3images/food1.jpg" alt="" style="width:100%">
-        <div class="w3-container">
-
-        </div>
-      </div>
-    </div>
-
-    <div class="w3-third w3-margin-bottom">
-      <div class="w3-card-4">
-        <img src="w3images/food2.jpg" alt="" style="width:100%">
-        <div class="w3-container">
-          
-        </div>
-      </div>
-    </div>
-
-  <div class="w3-third w3-margin-bottom">
-      <div class="w3-card-4">
-        <img src="w3images/food3.jpg" alt="" style="width:100%">
-        
-        <div class="w3-container">
-        
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Contact -->
-  
-
-</div>
-
-<!-- Footer -->
-<div class="w3-center w3-padding-64" id="contact">
- 
-<footer class="w3-container w3-padding-32 w3-light-grey w3-center">
-<h4>Address</h4>
-  <p><a href="https://www.google.com/maps/place/REGAL+TRUCK+STOP/@34.4915418,-89.0588535,17z/data=!3m1!4b1!4m5!3m4!1s0x8880a088223d7129:0xc091b69ab06abc6d!8m2!3d34.4915418!4d-89.0566648"><p>926 hwy 30 west</p> <p> New Albany MS, 38652</p></a></p>
-  <p><a href="tel:662-538-1080">662-538-1080</a></p>
-  <a href="#" class="w3-button w3-black w3-margin"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  <div class="w3-xlarge w3-section">
-    
-  </div>
-</footer>
-
-
-<script>
-// Slideshow
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function currentDiv(n) {
-  showDivs(slideIndex = n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demodots");
-  if (n > x.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = x.length} ;
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" w3-white", "");
-  }
-  x[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " w3-white";
-}
-</script>
 
 </body>
 </html>
